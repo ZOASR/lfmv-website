@@ -1,0 +1,53 @@
+---
+interface Props {
+	color: string;
+	icon: string;
+	gh_link: string;
+	npm_link: string;
+}
+const { color, icon, gh_link, npm_link } = Astro.props;
+---
+
+<div
+	style={{
+		"box-shadow": `0 0 1rem ${color}`,
+		background: color,
+	}}
+	class="mt-5 p-2 rounded-xl shadow-xl relative w-11/12 max-w-[45rem] mx-auto"
+>
+	<div
+		class="absolute flex justify-center items-start w-full"
+		style={{
+			filter: `drop-shadow(0 0 1rem ${color}) drop-shadow(0 0 0.1rem #000);`,
+		}}
+	>
+		<img
+			class="size-20 z-10 -translate-y-2/3"
+			src={icon}
+			alt=""
+			srcset=""
+		/>
+	</div>
+	<div class="flex justify-between items-center p-4">
+		<a
+			href={npm_link}
+			target="_blank"
+			class="cursor-pointer opacity-50 duration-200 hover:opacity-100 transition-all"
+			style={{ filter: "drop-shadow(0 0 0.5rem #cc3838)" }}
+		>
+			<img src="/npm-logo-black.svg" class="size-10" alt="" />
+		</a>
+		<div class="h-1 bg-white/25 rounded-lg mx-8 flex-1"></div>
+		<a
+			href={gh_link}
+			target="_blank"
+			class="cursor-pointer opacity-50 hover:opacity-100 transition-all duration-200"
+			style={{ filter: "drop-shadow(0 0 0.2rem #000)" }}
+		>
+			<img src="/github-mark-white.svg" class="size-10" alt="" />
+		</a>
+	</div>
+	<div class="content text-[1.5rem] skeleton h-[50rem]">
+		<slot />
+	</div>
+</div>

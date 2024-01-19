@@ -1,0 +1,44 @@
+---
+interface Props {
+	name: "Solid" | "React" | "Svelte";
+	currentName: "Solid" | "React" | "Svelte" | null;
+}
+
+const { name, currentName } = Astro.props;
+---
+
+<a
+	href={`/live_demo/${name}`}
+	class="group relative cursor-pointer rounded-[0.25rem] size-20 block p-4"
+	class:list={[
+		{
+			"bg-black shadow-lg shadow-black/50": name == currentName,
+			"bg-black/30 ring-1 ring-black/50": name != currentName,
+		},
+	]}
+>
+	{
+		name == "Solid" && (
+			<img src="/solid_logo.svg" class="size-full" alt="solid-js logo" />
+		)
+	}
+	{
+		name == "React" && (
+			<img src="/react-icon.svg" class="size-full" alt="react logo" />
+		)
+	}
+	{
+		name == "Svelte" && (
+			<img
+				src="/svelte-logo-square.svg"
+				class="size-full"
+				alt="svelte logo"
+			/>
+		)
+	}
+	<div
+		class="group-hover:opacity-100 group-hover:visible invisible text-lg opacity-0 absolute w-max mx-auto left-0 -top-full ring-2 ring-white bg-black text-white text-nowrap transition-all duration-300 p-4 rounded-lg"
+	>
+		<slot />
+	</div>
+</a>

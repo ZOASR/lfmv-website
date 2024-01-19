@@ -1,0 +1,63 @@
+---
+import Card from "../../components/Card.astro";
+import ComponentForm from "../../components/Solid/ComponentForm.tsx";
+import ComponentSelector from "../../components/ComponentSelector.astro";
+import ReactComponent from "../../components/React/React.tsx";
+import Solid from "../../components/Solid/Solid.tsx";
+import Svelte from "../../components/Svelte/Svelte.svelte";
+import Layout from "../../layouts/Layout.astro";
+
+type paths = "Solid" | "React" | "Svelte";
+export const prerender = true;
+
+export function getStaticPaths() {
+	return [
+		{ params: { component: "Solid" } },
+		{ params: { component: "React" } },
+		{ params: { component: "Svelte" } },
+	];
+}
+
+const { component } = Astro.params;
+---
+
+<Layout title={`@lastfm-viewer - Live Demo - ${component}`}>
+	<ComponentSelector selected={component as paths} />
+	<ComponentForm component={component as paths} client:load />
+	{
+		component == "Solid" && (
+			<Card
+				color="#2c4f7c"
+				gh_link="https://www.github.com/ZOASR/lastfm-viewer-solid.git"
+				npm_link="https://www.npmjs.com/package/@lastfm-viewer/solid"
+				icon="/solid_logo.svg"
+			>
+				<Solid client:only="solid-js" />
+			</Card>
+		)
+	}
+	{
+		component == "React" && (
+			<Card
+				color="#61dafb"
+				gh_link="https://www.github.com/ZOASR/lastfm-viewer-react.git"
+				npm_link="https://www.npmjs.com/package/@lastfm-viewer/react"
+				icon="/react-icon.svg"
+			>
+				<ReactComponent client:only="react" />
+			</Card>
+		)
+	}
+	{
+		component == "Svelte" && (
+			<Card
+				color="#ff3e00"
+				gh_link="https://www.github.com/ZOASR/lastfm-viewer-svelte.git"
+				npm_link="https://www.npmjs.com/package/@lastfm-viewer/svelte"
+				icon="/svelte-logo-square.svg"
+			>
+				<Svelte client:only="svelte" />
+			</Card>
+		)
+	}
+</Layout>

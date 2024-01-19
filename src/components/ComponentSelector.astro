@@ -1,0 +1,27 @@
+---
+import ComponentLink from "./ComponentLink.astro";
+
+interface Props {
+	selected: "Solid" | "React" | "Svelte" | null;
+}
+const { selected } = Astro.props;
+const componentColors = {
+	Solid: "#2c4f7c",
+	React: "#61dafb",
+	Svelte: "#ff3e00",
+};
+const backColor = selected
+	? `bg-[${componentColors[selected]}] shadow-[${componentColors[selected]}]`
+	: `bg-[#444] shadow-[#444]`;
+---
+
+<div
+	class="my-12 p-4 flex gap-4 justify-center items-center w-min mx-auto rounded-xl shadow-lg ring-2 ring-black/50"
+	class:list={[backColor]}
+>
+	<ComponentLink name="Solid" currentName={selected}>Solid-js</ComponentLink>
+	<div class="w-8 h-1 rounded-lg bg-white/50"></div>
+	<ComponentLink name="React" currentName={selected}>React</ComponentLink>
+	<div class="w-8 h-1 rounded-lg bg-white/50"></div>
+	<ComponentLink name="Svelte" currentName={selected}>Svelte</ComponentLink>
+</div>

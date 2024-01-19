@@ -1,0 +1,25 @@
+---
+interface Props {
+	classes: string;
+	src: string;
+	dropShadow: string;
+	link: string;
+}
+
+const { classes, src, dropShadow, link } = Astro.props;
+---
+
+<li
+	class="group -translate-x-1/3 opacity-25 scale-75 hover:scale-100 hover:opacity-100 hover:translate-x-0 transition-all duration-300 cursor-pointer relative filter"
+	class:list={[dropShadow]}
+>
+	<a class="flex gap-2" target="_blank" href={link}>
+		<img src={src} alt="" />
+	</a>
+	<div
+		class="group-hover:opacity-100 group-hover:visible h-full flex justify-center items-center text-2xl invisible opacity-0 absolute left-[110%] top-0 ring-2 text-nowrap font-bold transition-all duration-300 p-4 rounded-lg"
+		class:list={[classes]}
+	>
+		<slot />
+	</div>
+</li>

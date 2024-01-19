@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CodeBlock from "../components/Solid/CodeBlock";
+
+const title = "@lastfm-viewer";
+---
+
+<Layout title="@lastfm-viewer">
+	<h1
+		style=`--title-text:"${title}" `
+		class="title sm:text-[10rem] text-[5rem]"
+	>
+		{title}
+	</h1>
+	<div class="text-[2rem]">
+		<p>
+			Official homepage for the <span class="font-semibold"
+				>@lastfm-viewer</span
+			> packages, developed by: <a
+				class="underline font-semibold"
+				href="https://github.com/ZOASR">ZOASR</a
+			>
+		</p>
+		<a
+			href="/live_demo"
+			role="button"
+			tabindex="0"
+			class="font-bold py-2 px-6 text-[2rem] bg-white/80 hover:bg-white transition-all duration-200 rounded-lg text-black"
+		>
+			<span>Go to live demo</span>
+		</a>
+		<h2>Get started:</h2>
+	</div>
+
+	<CodeBlock client:load />
+</Layout>
+
+<style>
+	@import url("@fontsource-variable/jost");
+	@import url("@fontsource/fira-mono");
+
+	* {
+		font-family: "jost Variable", sans-serif;
+	}
+	code,
+	pre {
+		font-family: "Fira Mono", Menlo, monospace;
+	}
+	.title {
+		background: linear-gradient(90deg, #2c4f7c, #61dafb, #ff3e00);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+	}
+	.title::before {
+		content: var(--title-text);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: inherit;
+		filter: blur(30px);
+	}
+</style>
