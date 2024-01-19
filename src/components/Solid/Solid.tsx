@@ -23,7 +23,7 @@ const Solid = () => {
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
 	});
-	window.addEventListener("querychanged", (e) => {
+	window.addEventListener("querychanged", () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		setParams({
 			api_key: urlParams.get("api_key"),
