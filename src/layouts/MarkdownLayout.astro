@@ -2,6 +2,8 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "./markdown_styles.css";
+import "@fontsource-variable/jost";
+import "@fontsource/inter";
 
 interface Props {
 	frontmatter: {
@@ -34,9 +36,6 @@ const { frontmatter } = Astro.props;
 	</body>
 </html>
 <style>
-	@import url("@fontsource/inter");
-	@import url("@fontsource-variable/jost");
-
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
