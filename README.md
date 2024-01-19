@@ -34,13 +34,6 @@ pnpm add @lastfm-viewer/[react|svelte|solid]
 
 # Get Started
 
-This is a [turborepo](https://turbo.build/repo) development monorepo
-
-```sh
-git clone https://github.com/ZOASR/lastfm-viewer --recurse-submodules
-cd lastfm-viewer
-```
-
 ```sh
 npm i
 # or
@@ -56,13 +49,3 @@ pnpm run dev
 #or
 npm run dev
 ```
-
-## What's inside?
-
-This Turborepo includes the following packages and apps:
-
-### Apps and Packages
-
--   `lastfm-viewer-react`: [@lastfm-viewer/react](https://github.com/ZOASR/lastfm-viewer-react)
--   `lastfm-viewer-solid`: [@lastfm-viewer/solid](https://github.com/ZOASR/lastfm-viewer-solid)
--   `lastfm-viewer-svelte`: [@lastfm-viewer/svelte](https://github.com/ZOASR/lastfm-viewer-svelte)
