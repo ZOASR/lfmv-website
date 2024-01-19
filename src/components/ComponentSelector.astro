@@ -5,14 +5,14 @@ interface Props {
 	selected: "Solid" | "React" | "Svelte" | null;
 }
 const { selected } = Astro.props;
-const componentColors = {
-	Solid: "#2c4f7c",
-	React: "#61dafb",
-	Svelte: "#ff3e00",
-};
-const backColor = selected
-	? `bg-[${componentColors[selected]}] shadow-[${componentColors[selected]}]`
-	: `bg-[#444] shadow-[#444]`;
+const backColor =
+	selected == "React"
+		? `bg-[#61dafb] shadow-[#61dafb]`
+		: selected == "Solid"
+			? `bg-[#2c4f7c] shadow-[#2c4f7c]`
+			: selected == "Svelte"
+				? `bg-[#ff3e00] shadow-[#ff3e00]`
+				: `bg-[#444] shadow-[#444]`;
 ---
 
 <div
