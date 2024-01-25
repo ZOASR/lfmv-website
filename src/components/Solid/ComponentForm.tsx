@@ -1,17 +1,61 @@
 /** @jsxImportSource solid-js */
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 
 interface Props {
 	component: "Solid" | "React" | "Svelte";
 }
+type formParams = {
+	api_key: string | undefined;
+	username: string | undefined;
+	updateInterval: string | undefined;
+};
 
 const ComponentForm = (props: Props) => {
 	const [formData, setFormData] = createSignal<FormData>();
-
+	const [formDataObject, setFormDataObject] = createStore<formParams>({
+		api_key: "",
+		username: "",
+		updateInterval: "",
+	});
+	createEffect(() => {
+		const keys: string[] = [];
+		const lsFormString = localStorage.getItem("formData");
+		const lsForm: formParams | null = lsFormString
+			? JSON.parse(lsFormString)
+			: null;
+		const urlParams = new URLSearchParams(location.search);
+		for (const key of urlParams.keys()) {
+			keys.push(key);
+		}
+		if (lsForm) {
+			setFormDataObject({
+				api_key: lsForm.api_key,
+				username: lsForm.username,
+				updateInterval: lsForm.updateInterval,
+			});
+		} else if (keys) {
+			setFormDataObject({
+				api_key: urlParams.get("api_key") as string | undefined,
+				username: urlParams.get("username") as string | undefined,
+				updateInterval: urlParams.get("updateInterval") as
+					| string
+					| undefined,
+			});
+		}
+	});
 	function submit(e: SubmitEvent) {
 		e.preventDefault();
 		setFormData(new FormData(e.target as HTMLFormElement));
 		const params = new URLSearchParams(formData() as any);
+		localStorage.setItem(
+			"formData",
+			JSON.stringify({
+				api_key: formData()?.get("api_key"),
+				username: formData()?.get("username"),
+				updateInterval: formData()?.get("updateInterval"),
+			})
+		);
 		window.history.replaceState({}, "", `${location.pathname}?${params}`);
 		window.dispatchEvent(new Event("querychanged"));
 	}
@@ -59,6 +103,7 @@ const ComponentForm = (props: Props) => {
 					type="text"
 					placeholder="last.fm public api key"
 					name="api_key"
+					value={formDataObject.api_key}
 					required
 				/>
 			</label>
@@ -70,6 +115,7 @@ const ComponentForm = (props: Props) => {
 					type="text"
 					placeholder="last.fm username"
 					name="username"
+					value={formDataObject.username}
 				/>
 			</label>
 			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
@@ -81,6 +127,7 @@ const ComponentForm = (props: Props) => {
 					name="updateInterval"
 					min="10000"
 					max="99999"
+					value={formDataObject.updateInterval}
 				/>
 			</label>
 			<input
