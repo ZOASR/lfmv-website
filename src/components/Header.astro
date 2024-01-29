@@ -7,7 +7,7 @@ import NpmCarousel from "./NpmCarousel.astro";
 	class="flex justify-between max-w-screen text-slate-200 py-6 h-auto overflow-x-clip"
 >
 	<NpmCarousel />
-	<a href="/">
+	<a href="/" role="link">
 		<Logo />
 	</a>
 	<a
@@ -15,11 +15,13 @@ import NpmCarousel from "./NpmCarousel.astro";
 		href="https://github.com/ZOASR/lastfm-viewer"
 		target="_blank"
 		rel="noopener noreferrer"
+		aria-label="Link to @lastfm-viewer repo"
 	>
 		<div class="">
 			<img
 				src="/github-mark-white.svg"
 				class="-rotate-90 filter invert"
+				alt="GitHub logo that links to GitHub repo"
 			/>
 			<div
 				class="group-hover:opacity-100 group-hover:visible invisible text-2xl opacity-0 absolute -translate-x-[110%] top-[25%] ring-2 ring-black bg-white text-black text-nowrap font-bold transition-all duration-300 p-4 rounded-lg"

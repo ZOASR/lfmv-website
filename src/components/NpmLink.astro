@@ -14,7 +14,7 @@ const { classes, src, dropShadow, link } = Astro.props;
 	class:list={[dropShadow]}
 >
 	<a class="flex gap-2" target="_blank" href={link}>
-		<img src={src} alt="" />
+		<img src={src} alt={`Link to ${link}`} />
 	</a>
 	<div
 		class="group-hover:opacity-100 group-hover:visible h-full flex justify-center items-center text-2xl invisible opacity-0 absolute left-[110%] top-0 ring-2 text-nowrap font-bold transition-all duration-300 p-4 rounded-lg"

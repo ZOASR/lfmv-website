@@ -10,6 +10,7 @@ const { name, currentName } = Astro.props;
 <a
 	href={`/live_demo/${name}`}
 	class="group relative cursor-pointer rounded-[0.25rem] size-20 block p-4"
+	aria-label={`Link to ${name} live demo`}
 	class:list={[
 		{
 			"bg-black shadow-lg shadow-black/50": name == currentName,
