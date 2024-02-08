@@ -39,8 +39,8 @@ dependencies:
     specifier: ^2.3.0
     version: 2.3.0
   '@lastfm-viewer/svelte':
-    specifier: ^1.3.8
-    version: 1.3.8(@fontsource/inter@5.0.16)(@iconify/svelte@3.1.6)(@lastfm-viewer/tailwind-config@0.0.5)(@lastfm-viewer/ui@0.0.12)(@lastfm-viewer/utils@0.0.4)(svelte@4.2.10)
+    specifier: ^2.0.0
+    version: 2.0.0(@fontsource/inter@5.0.16)(@iconify/svelte@3.1.6)(@lastfm-viewer/tailwind-config@0.0.5)(@lastfm-viewer/ui@0.0.12)(@lastfm-viewer/utils@0.1.0)(svelte@4.2.10)
   '@types/react':
     specifier: ^18.2.55
     version: 18.2.55
@@ -857,21 +857,21 @@ packages:
       solid-js: 1.8.14
     dev: false
 
-  /@lastfm-viewer/svelte@1.3.8(@fontsource/inter@5.0.16)(@iconify/svelte@3.1.6)(@lastfm-viewer/tailwind-config@0.0.5)(@lastfm-viewer/ui@0.0.12)(@lastfm-viewer/utils@0.0.4)(svelte@4.2.10):
-    resolution: {integrity: sha512-MT35XORGtts5SmPiWoSbSM5og/ULuHLANJx1GMwCkNChhpqJZ1WwnuRnaUWFArbaa83sVpof4xQmZLNt1iRsGQ==}
+  /@lastfm-viewer/svelte@2.0.0(@fontsource/inter@5.0.16)(@iconify/svelte@3.1.6)(@lastfm-viewer/tailwind-config@0.0.5)(@lastfm-viewer/ui@0.0.12)(@lastfm-viewer/utils@0.1.0)(svelte@4.2.10):
+    resolution: {integrity: sha512-+ocPvljiQ8l0ff0zGBn1G6sP2nEdfE4i9wal6exAEWdMIUywEp884Cdf9TWChVqF2+JgiGKkblnalAFUPxBElQ==}
     peerDependencies:
       '@fontsource/inter': ^5.0.16
       '@iconify/svelte': ^3.1.6
       '@lastfm-viewer/tailwind-config': 0.0.5
-      '@lastfm-viewer/ui': 0.0.12
-      '@lastfm-viewer/utils': 0.0.4
+      '@lastfm-viewer/ui': 0.1.0
+      '@lastfm-viewer/utils': 0.1.0
       svelte: ^4.0.0
     dependencies:
       '@fontsource/inter': 5.0.16
       '@iconify/svelte': 3.1.6(svelte@4.2.10)
       '@lastfm-viewer/tailwind-config': 0.0.5
       '@lastfm-viewer/ui': 0.0.12
-      '@lastfm-viewer/utils': 0.0.4
+      '@lastfm-viewer/utils': 0.1.0
       svelte: 4.2.10
     dev: false
 
@@ -894,8 +894,8 @@ packages:
     transitivePeerDependencies:
       - ts-node
 
-  /@lastfm-viewer/utils@0.0.4:
-    resolution: {integrity: sha512-H3mWolT09tWHrm6DJNzzzr1cApE3BlG+zC4SWqMt5V+BKqIdssJj2L3Pdn598LJ8pNLWHGTTaY9AmI9hm/ZB1w==}
+  /@lastfm-viewer/utils@0.1.0:
+    resolution: {integrity: sha512-U86ZI7uW95eG4TvhPLdbNU92ArhGR6XpCl0zbKykVyrCNY9MV3oHeBU4BnmZCMDBn0UkRBK0TjSXzMoBeNqUvw==}
     dependencies:
       color.js: 1.2.0
     dev: false
