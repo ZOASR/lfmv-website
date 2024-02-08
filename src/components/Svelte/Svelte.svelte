@@ -3,11 +3,14 @@
 	import SvelteLastFmViewer from "@lastfm-viewer/svelte/SvelteLastFMViewer";
 	import { writable } from "svelte/store";
 
+	type Mode = "dev" | "prod";
+
 	type ComponentParams = {
 		api_key: null | string;
 		user: null | string;
 		updateInterval: null | number;
 		changed: boolean;
+		mode: Mode;
 	};
 
 	const urlParams = new URLSearchParams(window.location.search);
@@ -16,6 +19,7 @@
 		api_key: urlParams.get("api_key"),
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
+		mode: urlParams.get("mode") as Mode,
 		changed: false,
 	});
 
@@ -25,6 +29,7 @@
 			api_key: urlParams.get("api_key"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
+			mode: urlParams.get("mode") as Mode,
 			changed: true,
 		});
 		setTimeout(
@@ -33,6 +38,7 @@
 					api_key: urlParams.get("api_key"),
 					user: urlParams.get("username"),
 					updateInterval: Number(urlParams.get("updateInterval")),
+					mode: urlParams.get("mode") as Mode,
 					changed: false,
 				}),
 			100
@@ -52,6 +58,7 @@
 		updateInterval={params.updateInterval
 			? params.updateInterval
 			: undefined}
+		mode={params.mode}
 	/>
 {:else}
 	<div

@@ -9,6 +9,7 @@ type formParams = {
 	api_key: string | undefined;
 	username: string | undefined;
 	updateInterval: string | undefined;
+	mode: "dev" | "prod";
 };
 
 const ComponentForm = (props: Props) => {
@@ -17,6 +18,7 @@ const ComponentForm = (props: Props) => {
 		api_key: "",
 		username: "",
 		updateInterval: "",
+		mode: "dev",
 	});
 	createEffect(() => {
 		const keys: string[] = [];
@@ -33,6 +35,7 @@ const ComponentForm = (props: Props) => {
 				api_key: lsForm.api_key,
 				username: lsForm.username,
 				updateInterval: lsForm.updateInterval,
+				mode: lsForm.mode,
 			});
 		} else if (keys) {
 			setFormDataObject({
@@ -41,6 +44,7 @@ const ComponentForm = (props: Props) => {
 				updateInterval: urlParams.get("updateInterval") as
 					| string
 					| undefined,
+				mode: urlParams.get("mode") as "dev" | "prod" | undefined,
 			});
 		}
 	});
@@ -54,6 +58,7 @@ const ComponentForm = (props: Props) => {
 				api_key: formData()?.get("api_key"),
 				username: formData()?.get("username"),
 				updateInterval: formData()?.get("updateInterval"),
+				mode: formData()?.get("mode"),
 			})
 		);
 		window.history.replaceState({}, "", `${location.pathname}?${params}`);
@@ -129,6 +134,17 @@ const ComponentForm = (props: Props) => {
 					max="99999"
 					value={formDataObject.updateInterval}
 				/>
+			</label>
+			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
+				Mode:
+				<select
+					class="flex-1 rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700"
+					name="mode"
+					value={formDataObject.mode || "dev"}
+				>
+					<option value="dev">dev</option>
+					<option value="prod">prod</option>
+				</select>
 			</label>
 			<input
 				type="submit"

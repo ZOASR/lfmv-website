@@ -7,14 +7,18 @@ type ComponentParams = {
 	api_key: null | string;
 	user: null | string;
 	updateInterval: null | number;
+	mode: "dev" | "prod";
 	changed: boolean;
 };
+
+type Mode = "dev" | "prod";
 
 const Solid = () => {
 	const [params, setParams] = createStore<ComponentParams>({
 		api_key: null,
 		user: null,
 		updateInterval: null,
+		mode: "dev",
 		changed: false,
 	});
 	const urlParams = new URLSearchParams(window.location.search);
@@ -22,6 +26,7 @@ const Solid = () => {
 		api_key: urlParams.get("api_key"),
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
+		mode: urlParams.get("updateInterval") as Mode,
 	});
 	window.addEventListener("querychanged", () => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -29,6 +34,7 @@ const Solid = () => {
 			api_key: urlParams.get("api_key"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
+			mode: urlParams.get("mode") as Mode,
 			changed: true,
 		});
 		setParams((prev) => ({
@@ -56,6 +62,7 @@ const Solid = () => {
 							? params.updateInterval
 							: undefined
 					}
+					mode={params.mode}
 				/>
 			</Show>
 		</>
