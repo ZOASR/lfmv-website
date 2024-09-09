@@ -61,7 +61,8 @@ const { title } = Astro.props;
 	body {
 		line-height: 1.4;
 		/* font-size: 1.6em; */
-		height: 100dvh;
+		min-height: 100dvh;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -70,7 +71,8 @@ const { title } = Astro.props;
 	html {
 		font-size: 80%;
 		scroll-behavior: smooth;
-		height: 100dvh;
+		min-height: 100dvh;
+		width: 100dvw;
 	}
 
 	button {
@@ -113,6 +115,7 @@ const { title } = Astro.props;
 		margin: 0 auto;
 		padding: 1rem;
 		max-width: 1280px;
+		width: 100%;
 		color: white;
 		text-align: center;
 	}

@@ -76,9 +76,9 @@ const ComponentForm = (props: Props) => {
 		<form
 			onsubmit={submit}
 			method="post"
-			class={` mx-auto my-20 flex w-max flex-col items-center justify-center gap-4 text-nowrap rounded-md p-8 text-center font-bold ring-2 ring-black/50 shadow-lg ${classes}`}
+			class={` mx-auto my-20 flex max-w-max w-full flex-col items-center justify-center gap-4 text-nowrap rounded-md p-8 text-center font-bold ring-2 ring-black/50 shadow-lg ${classes}`}
 		>
-			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
+			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50 flex-col sm:!flex-row">
 				API key:
 				<span class="group relative z-10 size-8 cursor-help rounded-full">
 					<svg
@@ -104,7 +104,7 @@ const ComponentForm = (props: Props) => {
 					</span>
 				</span>
 				<input
-					class="rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700"
+					class="rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700 overflow-ellipsis w-full"
 					type="text"
 					placeholder="last.fm public api key"
 					name="api_key"
@@ -112,18 +112,18 @@ const ComponentForm = (props: Props) => {
 					required
 				/>
 			</label>
-			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
+			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50 flex-col sm:!flex-row">
 				Username:
 				<input
 					required
-					class="rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700"
+					class="rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700 flex-1 w-full"
 					type="text"
 					placeholder="last.fm username"
 					name="username"
 					value={formDataObject.username}
 				/>
 			</label>
-			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
+			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50 flex-col sm:!flex-row">
 				Update Interval(ms):
 				<input
 					class="flex-1 rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700"
@@ -135,7 +135,7 @@ const ComponentForm = (props: Props) => {
 					value={formDataObject.updateInterval}
 				/>
 			</label>
-			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50">
+			<label class="flex w-full items-center justify-between gap-4 rounded-md bg-white/30 p-4 text-gray-900 transition-all duration-300 hover:ring-2 hover:ring-white/50 flex-col sm:!flex-row">
 				Mode:
 				<select
 					class="flex-1 rounded-md border-none bg-gray-800 p-4 text-2xl text-gray-400 ring-2 ring-gray-900 focus:rounded-lg focus:ring-gray-700"
