@@ -8,15 +8,19 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-
-  site: "https://lastfm-viewer.vercel.app/",
-  integrations: [svelte(), tailwind({
-    nesting: true
-  }), solidJs({
-    include: ["**/Solid/*"]
-  }), react({
-    include: ["**/React/*"]
-  })],
-  output: "hybrid",
-  adapter: vercel()
+	site: "https://lastfm-viewer.vercel.app/",
+	integrations: [
+		svelte(),
+		tailwind({
+			nesting: true,
+		}),
+		solidJs({
+			include: ["**/Solid/*"],
+		}),
+		react({
+			include: ["**/React/*"],
+		}),
+	],
+	output: "server",
+	adapter: vercel(),
 });
