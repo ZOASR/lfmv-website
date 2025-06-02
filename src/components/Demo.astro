@@ -1,0 +1,20 @@
+---
+import LiveDemoButton from "./LiveDemoButton.astro";
+---
+
+<section
+	class="py-24 px-4 border-b border-gray-800 bg-gradient-to-b from-[#121212] to-gray-900/30 relative overflow-hidden"
+>
+	<div
+		class="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full opacity-30"
+	>
+	</div>
+	<div class="max-w-4xl mx-auto text-center relative z-10">
+		<h2 class="text-3xl font-bold mb-8">Try it out</h2>
+		<p class="text-lg text-gray-300 mb-12">
+			Experience the components in action with our interactive demo
+		</p>
+
+		<LiveDemoButton />
+	</div>
+</section>

@@ -1,0 +1,75 @@
+---
+import SvelteLogo from "/public/svelte-logo-square.svg";
+import ReactLogo from "/public/react-icon.svg";
+import SolidLogo from "/public/solid_logo.svg";
+---
+
+<section class="py-24 px-4 border-b border-gray-800 bg-gray-900/20">
+	<div class="max-w-4xl mx-auto">
+		<h2 class="text-3xl font-bold mb-8 text-center">About</h2>
+
+		<div class="text-center mb-12">
+			<p class="text-lg text-gray-300 mb-6">
+				Official homepage for the{" "}
+				<span class="font-mono">@lastfm-viewer</span>{" "}
+				packages, developed by:{" "}
+				<a
+					href="https://github.com/ZOASR"
+					class="text-white hover:text-blue-400 transition-colors underline"
+				>
+					ZOASR
+				</a>
+			</p>
+			<p class="text-gray-400 mb-8">
+				<span class="font-mono bg-gray-800 px-2 py-1 rounded">
+					@lastfm-viewer</span
+				>
+				<span>
+					is a collection of UI web components to view recent
+					scrobbles for a last.fm user, built for:
+				</span>
+			</p>
+
+			<div class="flex justify-center gap-4 mb-8">
+				<div
+					class="flex flex-col items-center gap-3 p-4 bg-react/20 rounded-lg border border-react/30"
+				>
+					<div class="w-12 h-12 flex items-center justify-center">
+						<ReactLogo />
+					</div>
+					<span
+						class="bg-react/20 text-react border border-react/30 px-3 py-1 rounded"
+					>
+						React
+					</span>
+				</div>
+
+				<div
+					class="flex flex-col items-center gap-3 p-4 bg-solid/20 rounded-lg border border-solid/30"
+				>
+					<div class="w-12 h-12 flex items-center justify-center">
+						<SolidLogo />
+					</div>
+					<span
+						class="bg-solid/20 text-solid border border-solid/30 px-3 py-1 rounded"
+					>
+						Solid.js
+					</span>
+				</div>
+
+				<div
+					class="flex flex-col items-center gap-3 p-4 bg-svelte/20 rounded-lg border border-svelte/30"
+				>
+					<div class="w-12 h-12 flex items-center justify-center">
+						<SvelteLogo />
+					</div>
+					<span
+						class="bg-svelte/20 text-svelte border border-svelte/30 px-3 py-1 rounded"
+					>
+						Svelte
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

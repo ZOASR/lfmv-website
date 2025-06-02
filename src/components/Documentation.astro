@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+import { Button } from "./ui/button";
+---
+
+<section class="py-24 px-4 border-b border-gray-800">
+	<div class="max-w-4xl mx-auto text-center">
+		<h2 class="text-3xl font-bold mb-8">Documentation</h2>
+		<p class="text-lg text-gray-300 mb-8">
+			Check out the full documentation and source code on GitHub
+		</p>
+
+		<a
+			href="https://github.com/ZOASR/lastfm-viewer"
+			class="border-gray-700 hover:bg-gray-800 text-white inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background hover:text-accent-foreground h-11 rounded-md px-8"
+		>
+			<!-- <Github class="h-5 w-5" /> -->
+			<Icon name="lucide:github" class="h-5 w-5" />
+			View on GitHub
+		</a>
+	</div>
+</section>

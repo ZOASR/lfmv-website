@@ -1,26 +1,22 @@
 import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
-import solidJs from "@astrojs/solid-js";
+
 import react from "@astrojs/react";
+import icon from "astro-icon";
 
-import vercel from "@astrojs/vercel/serverless";
+import solidJs from "@astrojs/solid-js";
 
-// https://astro.build/config
 export default defineConfig({
-	site: "https://lastfm-viewer.vercel.app/",
-	integrations: [
-		svelte(),
-		tailwind({
-			nesting: true,
-		}),
-		solidJs({
-			include: ["**/Solid/*"],
-		}),
-		react({
-			include: ["**/React/*"],
-		}),
-	],
-	output: "server",
-	adapter: vercel(),
+    integrations: [svelte(), react(), icon({
+        include: {
+            lucide: ["*"],
+        },
+		}), solidJs()],
+    output: "static",
+    site: "https://lastfm-viewer.vercel.app",
+    vite: {
+        plugins: [tailwindcss()],
+    },
 });

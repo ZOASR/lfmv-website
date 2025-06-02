@@ -1,4 +1,11 @@
-<figure class="lfmv_logo cursor-pointer" aria-details="lfmv-logo">
+---
+const { class: className } = Astro.props;
+---
+
+<figure
+	class:list={["lfmv_logo cursor-pointer", className]}
+	aria-details="lfmv-logo"
+>
 	<svg
 		id="Layer_1"
 		data-name="Layer 1"
@@ -36,23 +43,6 @@
 			></polyline>
 		</mask>
 	</svg>
-
-	<div
-		class="size-full absolute blur-md bg-gray-700 top-0 left-0 -z-20 rounded-2xl grid-cols-2 grid-rows-2"
-		id="logo_back"
-	>
-		<span
-			class="absolute w-1/2 h-1/3 left-1/2 top-0 rounded-md bg-[#61dafb44]"
-		></span>
-		<span
-			class="absolute w-1/2 h-1/2 right-0 bottom-0 rounded-md bg-[#ff3e0044]"
-		></span>
-		<span
-			class="absolute w-1/2 h-full left-0 top-0 rounded-md bg-[#30579544]"
-		></span>
-		<span class="absolute size-full left-0 bottom-0 rounded-md bg-black/25"
-		></span>
-	</div>
 </figure>
 
 <style lang="scss">
@@ -62,7 +52,7 @@
 		--stroke-wide: 15px;
 		--stroke-thin: 5px;
 		position: relative;
-		width: clamp(5rem, 50vw, 25rem);
+		width: 100%;
 		height: auto;
 		margin: auto 0;
 		border-radius: 10px;

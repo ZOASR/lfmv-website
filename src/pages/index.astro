@@ -1,129 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CodeBlock from "../components/Solid/CodeBlock";
-
-const title = "@lastfm-viewer";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+import About from "@/components/About.astro";
+import Demo from "@/components/Demo.astro";
+import Documentation from "@/components/Documentation.astro";
+import Installation from "@/components/Installation.astro";
 ---
 
-<Layout {title}>
-	<h1
-		style=`--title-text:"${title}" `
-		class="title sm:text-[10rem] text-[5rem] font-black"
-	>
-		{title}
-	</h1>
-	<div class="text-[2rem] *:my-8">
-		<p>
-			Official homepage for the
-			<span class="font-semibold">@lastfm-viewer</span>
-			packages, developed by:
-			<a class="underline font-semibold" href="https://github.com/ZOASR">
-				ZOASR
-			</a>
-		</p>
-		<br />
-		<p class="text-[1.5rem] text-balance">
-			<code class="font-semibold p-2 rounded-md bg-white/20 inline"
-				>@lastfm-viewer</code
-			>
-			is a collection of UI web components to view recent scrobbles for a last.fm
-			user, built for: <code
-				class="p-2 rounded-md font-semibold text-black bg-react"
-				>React</code
-			>
-			<code class="p-2 rounded-md font-semibold text-white bg-solid"
-				>Solid.js</code
-			>
-			<code class="p-2 rounded-md font-semibold text-black bg-svelte"
-				>Svelte</code
-			>
-		</p>
-		<a
-			href="/live_demo"
-			role="button"
-			class="live-demo-button font-bold block w-fit mx-auto hover:font-black py-2 px-6 text-[2rem] transition-all duration-150 rounded-lg"
-		>
-			Go to live demo
-		</a>
-		<h2>Get started:</h2>
-	</div>
-
-	<CodeBlock client:load />
+<Layout title="@lastfm-viewer - LastFM Components for Modern Frameworks">
+	<Hero />
+	<About />
+	<Demo />
+	<Installation />
+	<Documentation />
 </Layout>
-
-<style>
-	/* * {
-		font-family: "jost Variable", sans-serif;
-	} */
-
-	@property --angle {
-		syntax: "<angle>";
-		initial-value: 0deg;
-		inherits: false;
-	}
-	@keyframes rotate {
-		100% {
-			--angle: 360deg;
-		}
-	}
-
-	.live-demo-button {
-		--gradient: conic-gradient(
-			from var(--angle) at 50% 50%,
-			transparent,
-			#ff3e0088 10%,
-			transparent 30%,
-			#61dafb88 50%,
-			transparent 70%,
-			#2c4f7c88 90%,
-			transparent
-		);
-		position: relative;
-		animation: rotate 10s linear infinite;
-		border: 2px solid #0000;
-		background:
-			linear-gradient(90deg, #000, #000) padding-box,
-			var(--gradient) border-box;
-
-		&::after {
-			content: "";
-			top: 10px;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			animation: rotate 10s linear infinite;
-
-			background: var(--gradient);
-			filter: blur(10px);
-			opacity: 0.7;
-		}
-	}
-	code,
-	pre,
-	.title {
-		font-family: "Fira Mono", Menlo, monospace;
-		cursor: text;
-	}
-	.title {
-		background: linear-gradient(
-			90deg,
-			var(--color-solid),
-			var(--color-svelte),
-			var(--color-react)
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		position: relative;
-	}
-	.title::before {
-		content: var(--title-text);
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: inherit;
-		filter: blur(30px);
-	}
-</style>

@@ -2,7 +2,7 @@
 
 import { createSignal, type Accessor, createEffect } from "solid-js";
 import { type FrameWork } from "./CodeBlock";
-import { codeToHtml } from "shikiji";
+import { codeToHtml, createHighlighter } from "shiki";
 
 const reactCode = `import ReactLastFMViewer from "@lastfm-viewer/react";
 
@@ -42,32 +42,42 @@ const svelteCode = `<script>
     updateInterval={20000} {/* 20 seconds */}
 />`;
 
+const defaultCode = reactCode;
+
 const ComponentCode = (props: { selectedFW: Accessor<FrameWork> }) => {
-	const [code, setCode] = createSignal<string>("");
+	const [code, setCode] = createSignal<string>(reactCode);
 	const [codeHtml, setCodeHtml] = createSignal<string>("");
 
+	const renderCode = async () => {
+		const codeString = await codeToHtml(code(), {
+			lang: props.selectedFW() == "svelte" ? "svelte" : "tsx",
+			theme: "min-dark",
+			colorReplacements: {
+				"min-dark": {
+					"#121212": "transparent",
+				},
+			},
+		});
+		setCodeHtml(codeString);
+	};
+
+	renderCode();
+
 	createEffect(() => {
+		renderCode();
 		setCode(
 			props.selectedFW() == "react"
 				? reactCode
 				: props.selectedFW() == "solid"
-					? solidCode
-					: props.selectedFW() == "svelte"
-						? svelteCode
-						: ""
+				? solidCode
+				: props.selectedFW() == "svelte"
+				? svelteCode
+				: ""
 		);
-	});
-	createEffect(() => {
-		codeToHtml(code(), {
-			lang: props.selectedFW() == "svelte" ? "svelte" : "tsx",
-			theme: "vitesse-dark",
-		}).then((codeHtml) => {
-			setCodeHtml(codeHtml);
-		});
 	});
 	return (
 		<div
-			class="*:w-full text-start text-[1.2rem] px-8 py-4 ring-2 ring-white/10 bg-[#121212] rounded-lg mt-4 *:overflow-x-auto w-full"
+			class="*:w-full text-start text-[1.2rem] px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 *:overflow-x-auto w-full"
 			innerHTML={codeHtml()}
 		></div>
 	);

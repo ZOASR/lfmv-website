@@ -1,10 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import {
-	createEffect,
-	createSignal,
-} from "solid-js";
-import { codeToHtml } from "shikiji";
+import { createEffect, createSignal } from "solid-js";
+import { codeToHtml } from "shiki";
 import ComponentCode from "./ComponentCode";
 
 export type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
@@ -28,10 +25,12 @@ const CodeBlock = () => {
 	);
 
 	createEffect(() => {
-		const codeString = `${selectedPM()} ${selectedPM() == "yarn" || selectedPM() == "pnpm" ? "add" : "install"} @lastfm-viewer/${selectedFW()}`;
+		const codeString = `${selectedPM()} ${
+			selectedPM() == "yarn" || selectedPM() == "pnpm" ? "add" : "install"
+		} @lastfm-viewer/${selectedFW()}`;
 		codeToHtml(codeString, {
 			lang: "bash",
-			theme: "vitesse-dark",
+			theme: "min-dark",
 		}).then((codeHtml) => {
 			setInstallScript(codeHtml);
 		});
@@ -40,8 +39,8 @@ const CodeBlock = () => {
 		"h-full w-full bg-inherit font-mono text-nowrap text-white py-4 text-center";
 	return (
 		<>
-			<div class="sm:max-w-[570px] mx-auto max-w-[90dvw]">
-				<div class="flex w-full gap-4 justify-between bg-[#121212] ring-2 ring-white/10 h-max m-0 rounded-lg overflow-auto">
+			<div class=" mx-auto ">
+				<div class="flex w-full gap-4 justify-between bg-gradient-to-b from-gray-700/50 to-gray-900/50  ring-2 ring-white/10 h-max m-0 rounded-lg overflow-auto">
 					<div class="w-[40%] text-base flex justify-between divide-y-0 divide-x-2 divide-white/10 divide-solid">
 						<button
 							style={{
@@ -150,7 +149,7 @@ const CodeBlock = () => {
 				</div>
 				<div
 					innerHTML={installScript()}
-					class=" *:w-full text-start px-8 py-4 ring-2 ring-white/10 bg-[#121212] rounded-lg mt-4 *:overflow-x-auto w-full"
+					class=" *:w-full text-start px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 *:overflow-x-auto w-full"
 				></div>
 				<ComponentCode selectedFW={selectedFW} />
 			</div>
