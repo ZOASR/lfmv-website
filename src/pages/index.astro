@@ -12,7 +12,7 @@ const title = "@lastfm-viewer";
 	>
 		{title}
 	</h1>
-	<div class="text-[2rem]">
+	<div class="text-[2rem] *:my-8">
 		<p>
 			Official homepage for the
 			<span class="font-semibold">@lastfm-viewer</span>
@@ -20,25 +20,23 @@ const title = "@lastfm-viewer";
 			<a class="underline font-semibold" href="https://github.com/ZOASR">
 				ZOASR
 			</a>
-			<br />
-			<p class="text-[1.5rem] text-balance">
-				<code class="font-semibold p-2 rounded-md bg-white/20 inline"
-					>@lastfm-viewer</code
-				>
-				is a collection of UI web components to view recent scrobbles for
-				a last.fm user, built for: <code
-					class="p-2 rounded-md font-semibold text-black bg-[#61dafb]"
-					>React</code
-				>
-				<code
-					class="p-2 rounded-md font-semibold text-white bg-[#2c4f7c]"
-					>Solid.js</code
-				>
-				<code
-					class="p-2 rounded-md font-semibold text-black bg-[#ff3e00]"
-					>Svelte</code
-				>
-			</p>
+		</p>
+		<br />
+		<p class="text-[1.5rem] text-balance">
+			<code class="font-semibold p-2 rounded-md bg-white/20 inline"
+				>@lastfm-viewer</code
+			>
+			is a collection of UI web components to view recent scrobbles for a last.fm
+			user, built for: <code
+				class="p-2 rounded-md font-semibold text-black bg-react"
+				>React</code
+			>
+			<code class="p-2 rounded-md font-semibold text-white bg-solid"
+				>Solid.js</code
+			>
+			<code class="p-2 rounded-md font-semibold text-black bg-svelte"
+				>Svelte</code
+			>
 		</p>
 		<a
 			href="/live_demo"
@@ -108,7 +106,12 @@ const title = "@lastfm-viewer";
 		cursor: text;
 	}
 	.title {
-		background: linear-gradient(90deg, #2c4f7c, #61dafb, #ff3e00);
+		background: linear-gradient(
+			90deg,
+			var(--color-solid),
+			var(--color-svelte),
+			var(--color-react)
+		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		position: relative;
