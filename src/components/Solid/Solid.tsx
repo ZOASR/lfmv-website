@@ -4,7 +4,7 @@ import { Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 type ComponentParams = {
-	api_key: null | string;
+	apiKey: null | string;
 	user: null | string;
 	updateInterval: null | number;
 	mode: "dev" | "prod";
@@ -15,7 +15,7 @@ type Mode = "dev" | "prod";
 
 const Solid = () => {
 	const [params, setParams] = createStore<ComponentParams>({
-		api_key: null,
+		apiKey: null,
 		user: null,
 		updateInterval: null,
 		mode: "dev",
@@ -23,7 +23,7 @@ const Solid = () => {
 	});
 	const urlParams = new URLSearchParams(window.location.search);
 	setParams({
-		api_key: urlParams.get("api_key"),
+		apiKey: urlParams.get("apiKey"),
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
 		mode: urlParams.get("updateInterval") as Mode,
@@ -31,7 +31,7 @@ const Solid = () => {
 	window.addEventListener("querychanged", () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		setParams({
-			api_key: urlParams.get("api_key"),
+			apiKey: urlParams.get("apiKey"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
 			mode: urlParams.get("mode") as Mode,
@@ -45,17 +45,11 @@ const Solid = () => {
 	return (
 		<>
 			<Show
-				when={params.api_key && params.user && !params.changed}
-				fallback={
-					<div class="flex h-full w-full items-center justify-center text-center text-4xl">
-						<p class="rounded-lg bg-black/50 p-4 shadow-2xl ring-1 ring-black">
-							Component will render here
-						</p>
-					</div>
-				}
+				when={params.apiKey && params.user && !params.changed}
+				fallback={<p>Component will render here</p>}
 			>
 				<SolidLastFMViewer
-					api_key={params.api_key as string}
+					api_key={params.apiKey as string}
 					user={params.user as string}
 					updateInterval={
 						params.updateInterval

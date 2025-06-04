@@ -1,49 +1,38 @@
 ---
-import LFMVLogo from "./Logo.astro";
+import { Icon } from "astro-icon/components";
+import LFMVLogoStatic from "./LFMVLogoStatic.astro";
 ---
 
-<footer class="py-12 px-4 bg-gray-900/30">
+<footer class="py-12 px-4 bg-gray-900/30" transition:name="footer">
 	<div class="max-w-4xl mx-auto text-center">
 		<div
 			class="flex flex-col sm:flex-row gap-8 items-center justify-center mb-6"
 		>
-			<div class="flex justify-center">
-				<div class="relative w-12 h-12">
-					<div
-						class="absolute w-full h-full blur-xl rounded-full"
-						style={{
-							background: `
-						radial-gradient(circle at 5% 0%, var(--color-solid), transparent),
-						radial-gradient(circle at 10% 50%, var(--color-svelte), transparent),
-						radial-gradient(circle at 5% 5%, var(--color-react), transparent)
-						;`,
-						}}
-					>
-					</div>
-					<!-- <Music class="h-8 w-8 text-white relative z-10" /> -->
-					<LFMVLogo class="h-8 w-8 text-white relative z-10" />
-				</div>
-			</div>
+			<!-- <Music class="h-8 w-8 text-white relative z-10" /> -->
+			<LFMVLogoStatic class="h-8 w-8 text-white relative z-10" />
 			<p class="text-gray-400">
 				<span class="font-mono">@lastfm-viewer</span> • MIT License
 			</p>
-			<ul class="flex justify-center gap-6">
+			<ul
+				class="flex sm:flex-row flex-col justify-center items-center-safe gap-6"
+			>
 				<a
-					href="#"
+					href="https://github.com/ZOASR/lastfm-viewer/blob/main/README.md"
 					class="text-gray-500 hover:text-white transition-colors"
 				>
 					Documentation
 				</a>
 				<a
-					href="#"
+					href="/livedemo"
 					class="text-gray-500 hover:text-white transition-colors"
 				>
-					Examples
+					Live Demo
 				</a>
 				<a
 					href="https://github.com/ZOASR/lastfm-viewer"
-					class="text-gray-500 hover:text-white transition-colors"
+					class="text-gray-500 hover:text-white transition-colors flex items-center gap-1"
 				>
+					<Icon name="lucide:github" class="size-5" />
 					GitHub
 				</a>
 			</ul>

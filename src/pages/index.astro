@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Footer from "../components/Footer.astro";
 import About from "@/components/About.astro";
 import Demo from "@/components/Demo.astro";
 import Documentation from "@/components/Documentation.astro";
 import Installation from "@/components/Installation.astro";
 ---
 
-<Layout title="@lastfm-viewer - LastFM Components for Modern Frameworks">
+<Layout
+	title="@lastfm-viewer - LastFM Components for Modern Frameworks"
+	showLogo={false}
+>
 	<Hero />
 	<About />
 	<Demo />

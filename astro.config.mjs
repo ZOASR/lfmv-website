@@ -13,8 +13,12 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
 	integrations: [
 		svelte(),
-		react(),
-		solidJs(),
+		react({
+			include: ["src/components/ui/*", "src/components/React/*"],
+		}),
+		solidJs({
+			include: ["src/components/Solid/*"],
+		}),
 		icon({
 			include: {
 				lucide: ["*"],

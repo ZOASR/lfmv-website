@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ComponentSelector from "../../components/ComponentSelector.astro";
+---
+
+<Layout title="@lastfm-viewer - Live Demo">
+	<section class="p-4 mx-auto w-10/12 sm:max-w-[1000px]">
+		<h2 class="mb-8 text-center text-3xl">Choose Your UI Framework</h2>
+		<p class="text-gray-400 text-center text-lg">
+			Select the technology you'd like to work with
+		</p>
+
+		<ComponentSelector selected={null} />
+	</section>
+</Layout>

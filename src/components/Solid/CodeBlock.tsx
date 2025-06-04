@@ -36,12 +36,12 @@ const CodeBlock = () => {
 		});
 	});
 	const buttonStyle =
-		"h-full w-full bg-inherit font-mono text-nowrap text-white py-4 text-center";
+		"h-full w-full bg-inherit font-mono text-nowrap text-white py-4 text-center text-xs";
 	return (
 		<>
-			<div class=" mx-auto ">
-				<div class="flex w-full gap-4 justify-between bg-gradient-to-b from-gray-700/50 to-gray-900/50  ring-2 ring-white/10 h-max m-0 rounded-lg overflow-auto">
-					<div class="w-[40%] text-base flex justify-between divide-y-0 divide-x-2 divide-white/10 divide-solid">
+			<div class=" mx-auto text-xs">
+				<div class="flex w-full gap-4 justify-between bg-gradient-to-b from-gray-700/50 to-gray-900/50  ring-2 ring-white/10 h-max m-0 rounded-lg overflow-x-auto">
+					<div class="w-[40%] flex justify-between divide-y-0 divide-x-2 divide-white/10 divide-solid">
 						<button
 							style={{
 								background:
@@ -84,7 +84,7 @@ const CodeBlock = () => {
 						</button>
 					</div>
 					{/*  */}
-					<div class="w-[40%] text-sm flex justify-between divide-y-0 divide-x-2  divide-white/10 divide-solid ">
+					<div class="w-[40%] flex justify-between divide-y-0 divide-x-2  divide-white/10 divide-solid ">
 						<button
 							style={{
 								background:
@@ -149,7 +149,7 @@ const CodeBlock = () => {
 				</div>
 				<div
 					innerHTML={installScript()}
-					class=" *:w-full text-start px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 *:overflow-x-auto w-full"
+					class=" *:w-full text-start px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 *:overflow-x-auto w-full overflow-x-auto"
 				></div>
 				<ComponentCode selectedFW={selectedFW} />
 			</div>

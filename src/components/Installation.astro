@@ -3,8 +3,10 @@ import CodeBlock from "./Solid/CodeBlock";
 ---
 
 <section id="installation" class="py-24 px-4 border-b border-gray-800">
-	<div class="sm:w-[70%] w-full max-w-[700px] text-xs mx-auto">
+	<div class="w-full sm:w-1/2 sm:min-w-[500px] max-w-4xl text-xs mx-auto">
 		<h2 class="text-3xl font-bold mb-8 text-center">Get started</h2>
-		<CodeBlock client:only="solid" />
+		<CodeBlock client:only="solid-js">
+			<div slot="fallback">Loading</div>
+		</CodeBlock>
 	</div>
 </section>

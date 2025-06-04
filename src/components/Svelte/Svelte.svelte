@@ -1,6 +1,11 @@
 <script lang="ts">
-	import "@lastfm-viewer/ui";
 	import SvelteLastFmViewer from "@lastfm-viewer/svelte/SvelteLastFMViewer";
+	import "@lastfm-viewer/ui/styles";
+	import "@lastfm-viewer/ui/styles/LastFMViewer.css";
+	import "@lastfm-viewer/ui/styles/PastTracks.css";
+	import "@lastfm-viewer/ui/styles/TrackProgressBar.css";
+	import "@lastfm-viewer/ui/styles/CardFooter.css";
+	import "@lastfm-viewer/ui/styles/ErrorView.css";
 	import { writable } from "svelte/store";
 
 	type Mode = "dev" | "prod";
@@ -16,7 +21,7 @@
 	const urlParams = new URLSearchParams(window.location.search);
 
 	const paramsStore = writable<ComponentParams>({
-		api_key: urlParams.get("api_key"),
+		api_key: urlParams.get("apiKey"),
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
 		mode: urlParams.get("mode") as Mode,
@@ -26,7 +31,7 @@
 	window.addEventListener("querychanged", (e) => {
 		const urlParams = new URLSearchParams(window.location.search);
 		paramsStore.set({
-			api_key: urlParams.get("api_key"),
+			api_key: urlParams.get("apiKey"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
 			mode: urlParams.get("mode") as Mode,
@@ -35,7 +40,7 @@
 		setTimeout(
 			() =>
 				paramsStore.set({
-					api_key: urlParams.get("api_key"),
+					api_key: urlParams.get("apiKey"),
 					user: urlParams.get("username"),
 					updateInterval: Number(urlParams.get("updateInterval")),
 					mode: urlParams.get("mode") as Mode,
@@ -49,6 +54,7 @@
 	paramsStore.subscribe((val) => {
 		params = val;
 	});
+	$: console.log(params);
 </script>
 
 {#if params.user && params.api_key && !params.changed}
@@ -61,11 +67,5 @@
 		mode={params.mode}
 	/>
 {:else}
-	<div
-		class="flex justify-center items-center text-4xl w-full h-full text-center"
-	>
-		<p class="bg-black/50 rounded-lg p-4 shadow-2xl ring-1 ring-black">
-			Component will render here
-		</p>
-	</div>
+	<p>Component will render here</p>
 {/if}

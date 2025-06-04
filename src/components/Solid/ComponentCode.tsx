@@ -2,7 +2,7 @@
 
 import { createSignal, type Accessor, createEffect } from "solid-js";
 import { type FrameWork } from "./CodeBlock";
-import { codeToHtml, createHighlighter } from "shiki";
+import { codeToHtml } from "shiki";
 
 const reactCode = `import ReactLastFMViewer from "@lastfm-viewer/react";
 
@@ -77,7 +77,7 @@ const ComponentCode = (props: { selectedFW: Accessor<FrameWork> }) => {
 	});
 	return (
 		<div
-			class="*:w-full text-start text-[1.2rem] px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 *:overflow-x-auto w-full"
+			class=" text-start px-8 py-4 ring-2 ring-white/10 bg-gradient-to-b from-gray-700/50 to-gray-900/50 rounded-lg mt-4 [&>pre]:overflow-auto **:overflow-x-auto"
 			innerHTML={codeHtml()}
 		></div>
 	);

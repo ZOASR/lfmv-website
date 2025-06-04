@@ -1,0 +1,28 @@
+---
+import Logo from "./Logo.astro";
+const { class: className } = Astro.props;
+---
+
+{/* Logo */}
+<div
+	transition:name="logo"
+	class:list={[
+		className,
+		"relative size-40 flex items-center justify-center",
+	]}
+>
+	<div
+		class="absolute w-full h-full blur-3xl rounded-full"
+		style={{
+			background: `
+			radial-gradient(circle at 5% 0%, var(--color-solid), transparent),
+			radial-gradient(circle at 10% 50%, var(--color-svelte), transparent),
+			radial-gradient(circle at 5% 5%, var(--color-react), transparent)
+			;`,
+		}}
+	>
+	</div>
+	<div class="relative w-full">
+		<Logo />
+	</div>
+</div>

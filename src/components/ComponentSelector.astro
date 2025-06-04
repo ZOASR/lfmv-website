@@ -1,27 +1,144 @@
 ---
-import ComponentLink from "./ComponentLink.astro";
+import { Icon } from "astro-icon/components";
+
+import SolidLogo from "/public/solid_logo.svg";
+import ReactLogo from "/public/react-icon.svg";
+import SvelteLogo from "/public/svelte-logo-square.svg";
 
 interface Props {
-	selected: "Solid" | "React" | "Svelte" | null;
+	selected: "solid" | "react" | "svelte" | null;
 }
 const { selected } = Astro.props;
-const backColor =
-	selected == "React"
-		? `bg-[#61dafb] shadow-[#61dafb]`
-		: selected == "Solid"
-			? `bg-[#2c4f7c] shadow-[#2c4f7c]`
-			: selected == "Svelte"
-				? `bg-[#ff3e00] shadow-[#ff3e00]`
-				: `bg-[#444] shadow-[#444]`;
+
+const technologies = [
+	{
+		id: "solid",
+		name: "solid.js",
+		description:
+			"Simple and performant reactivity for building user interfaces.",
+		color: "from-green-400 to-emerald-500",
+		bgColor:
+			"bg-solid/10 hover:bg-solid/30 data-[state=active]:bg-solid/30",
+		borderColor: "border-solid/20 hover:border-solid/40",
+	},
+	{
+		id: "react",
+		name: "React",
+		description: "JavaScript library for building UIs",
+		bgColor:
+			"bg-react/10 hover:bg-react/30 data-[state=active]:bg-react/30",
+		borderColor: "border-react/20 hover:border-react/40",
+	},
+	{
+		id: "svelte",
+		name: "Svelte",
+		description: "Cybernetically enhanced web apps",
+		bgColor:
+			"bg-svelte/10 hover:bg-svelte/30 data-[state=active]:bg-svelte/30",
+		borderColor: "border-svelte/20 hover:border-svelte/40",
+	},
+];
 ---
 
 <div
-	class="my-12 p-4 flex gap-4 justify-center items-center w-full max-w-max mx-auto rounded-xl shadow-lg ring-2 ring-black/50"
-	class:list={[backColor]}
+	class="p-4 flex gap-4 justify-center items-center w-full mx-auto rounded-xl shadow-lg ring-2 ring-black/50"
 >
-	<ComponentLink name="Solid" currentName={selected}>Solid-js</ComponentLink>
-	<div class="w-8 h-1 rounded-lg bg-white/50"></div>
-	<ComponentLink name="React" currentName={selected}>React</ComponentLink>
-	<div class="w-8 h-1 rounded-lg bg-white/50"></div>
-	<ComponentLink name="Svelte" currentName={selected}>Svelte</ComponentLink>
+	<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+		{
+			technologies.map((tech) => (
+				<a
+					href={`/livedemo/${tech.id}`}
+					data-state={selected === tech.id ? "active" : "inactive"}
+					class={`
+			  relative group cursor-pointer rounded-lg border transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
+			  ${
+					selected === tech.id
+						? `${tech.bgColor} ${tech.borderColor} ring-2 ring-white/20 scale-105`
+						: `bg-gray-900/50 border-gray-800 hover:border-gray-700 ${tech.bgColor}`
+				}
+
+			`}
+					style={{
+						animation:
+							selected === tech.id
+								? "pulsate 2s infinite"
+								: "none",
+					}}
+				>
+					{/* Selection indicator */}
+					{selected === tech.id && (
+						<div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center animate-bounce">
+							{/* <Check class="w-4 h-4 text-gray-900" /> */}
+							<Icon
+								name="lucide:check"
+								class="w-4 h-4 text-gray-900"
+							/>
+						</div>
+					)}
+
+					<div class="p-8 text-center">
+						{/* Logo */}
+						<div class="flex justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+							{
+								// @ts-ignore
+								tech.id == "solid" ? (
+									<div class="w-12 h-12 rounded-lg flex items-center justify-center">
+										<SolidLogo class="w-12 h-12 text-white" />
+									</div>
+								) : tech.id == "svelte" ? (
+									<div class="w-12 h-12 rounded-lg flex items-center justify-center">
+										<SvelteLogo class="w-12 h-12 text-white" />
+									</div>
+								) : (
+									<div class="w-12 h-12 rounded-lg flex items-center justify-center">
+										<ReactLogo class="w-12 h-12 text-white" />
+									</div>
+								)
+							}
+						</div>
+
+						{/* Technology name */}
+						<h3 class="text-2xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors">
+							{tech.name}
+						</h3>
+
+						{/* Description */}
+						<p class="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+							{tech.description}
+						</p>
+
+						{/* Hover effect overlay */}
+						<div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+					</div>
+				</a>
+			))
+		}
+	</div>
 </div>
+
+<style>
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 0.5s ease-out;
+	}
+
+	@keyframes pulsate {
+		0%,
+		100% {
+			box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
+		}
+		50% {
+			box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+		}
+	}
+</style>

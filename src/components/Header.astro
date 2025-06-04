@@ -1,3 +1,44 @@
 ---
+import { Icon } from "astro-icon/components";
+import LFMVLogoStatic from "./LFMVLogoStatic.astro";
 
+const { showLogo } = Astro.props;
 ---
+
+<header
+	class="w-full h-auto px-8 py-4 flex gap-4 sm:flex-row flex-col items-center justify-around backdrop-blur-md bg-gray-900/30 border-b-2 border-gray-800 min-h-28 sticky top-0 z-50"
+	transition:name="header"
+>
+	{
+		showLogo ?? (
+			<a href="/" aria-label="Home/Logo">
+				<LFMVLogoStatic transition="logo" class="h-12 w-12" />
+			</a>
+		)
+	}
+	<nav transition:name="nav">
+		<ul
+			class="flex sm:text-base text-sm transition-all justify-center gap-6"
+		>
+			<a
+				href="https://github.com/ZOASR/lastfm-viewer/blob/main/README.md"
+				class="text-gray-500 hover:text-white transition-colors"
+			>
+				Documentation
+			</a>
+			<a
+				href="/livedemo"
+				class="text-gray-500 hover:text-white transition-colors"
+			>
+				Live Demo
+			</a>
+			<a
+				href="https://github.com/ZOASR/lastfm-viewer"
+				class="text-gray-500 hover:text-white transition-colors flex items-center gap-1"
+			>
+				<Icon name="lucide:github" class="size-5" />
+				GitHub
+			</a>
+		</ul>
+	</nav>
+</header>

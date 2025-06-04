@@ -1,0 +1,110 @@
+---
+import Card from "@/components/Card.astro";
+import ComponentForm from "@/components/React/ComponentForm";
+import ComponentSelector from "@/components/ComponentSelector.astro";
+import ReactComponent from "@/components/React/ReactComponent";
+import Solid from "@/components/Solid/Solid.tsx";
+import Svelte from "@/components/Svelte/Svelte.svelte";
+import Layout from "@/layouts/Layout.astro";
+import Skeleton from "@/components/Skeleton.astro";
+
+type paths = "solid" | "react" | "svelte";
+export const prerender = false;
+
+const { component } = Astro.params;
+---
+
+<Layout title={`@lastfm-viewer - Live Demo - ${component}`}>
+	<section class="p-4 mx-auto w-10/12 md:max-w-[1200px]">
+		<h2 class="mb-8 text-center text-3xl">Choose Your UI Framework</h2>
+		<p class="text-gray-400 text-center text-lg">
+			Select the technology you'd like to work with
+		</p>
+
+		<ComponentSelector selected={component as paths} />
+		<ComponentForm theme={component as paths} client:only="react">
+			<div
+				class="w-full max-w-xl mx-auto mb-2 rounded-lg bg-slate-900 p-8 shadow-lg"
+				slot="fallback"
+			>
+				{/* Header */}
+				<div class="mb-8">
+					<Skeleton class="mb-3 h-8 w-48 bg-slate-800" />
+					<Skeleton class="h-4 w-80 bg-slate-800" />
+				</div>
+
+				{/* Form Fields in Grid */}
+				<div class="grid grid-cols-2 gap-6 mb-8">
+					{/* Left Column */}
+					<div class="space-y-6">
+						{/* API Key field */}
+						<div class="space-y-3">
+							<div class="flex items-center gap-2">
+								<Skeleton class="h-4 w-16 bg-slate-800" />
+								<Skeleton
+									class="h-4 w-4 rounded-full bg-slate-800"
+								/>
+							</div>
+							<Skeleton
+								class="h-12 w-full rounded-md bg-slate-800"
+							/>
+						</div>
+
+						{/* Update Interval field */}
+						<div class="space-y-3">
+							<Skeleton class="h-4 w-36 bg-slate-800" />
+							<Skeleton
+								class="h-12 w-full rounded-md bg-slate-800"
+							/>
+						</div>
+					</div>
+
+					{/* Right Column */}
+					<div class="space-y-6">
+						{/* Username field */}
+						<div class="space-y-3">
+							<Skeleton class="h-4 w-20 bg-slate-800" />
+							<Skeleton
+								class="h-12 w-full rounded-md bg-slate-800"
+							/>
+						</div>
+
+						{/* Mode field */}
+						<div class="space-y-3">
+							<Skeleton class="h-4 w-12 bg-slate-800" />
+							<Skeleton
+								class="h-12 w-full rounded-md bg-slate-800"
+							/>
+						</div>
+					</div>
+				</div>
+
+				{/* Save button */}
+				<div class="flex justify-center">
+					<Skeleton class="h-12 w-48 rounded-md bg-blue-800/50" />
+				</div>
+			</div>
+		</ComponentForm>
+		{
+			component == "solid" && (
+				<Card theme="solid">
+					<Solid client:only="solid-js" />
+				</Card>
+			)
+		}
+		{
+			component == "react" && (
+				<Card theme="react">
+					<ReactComponent client:only="react" />
+				</Card>
+			)
+		}
+		{
+			component == "svelte" && (
+				<Card theme="svelte">
+					<Svelte client:only="svelte" />
+				</Card>
+			)
+		}
+	</section>
+</Layout>
