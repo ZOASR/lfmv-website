@@ -11,7 +11,6 @@ function App() {
         <>
             <ReactLastFMViewer
                 user="[username]"
-                api_key="[API_KEY]"
                 updateInterval={20000} //20 seconds
             />
         </>
@@ -25,7 +24,6 @@ function App() {
         <>
             <SolidLastFMViewer
                 user="[username]"
-                api_key="[API_KEY]"
                 updateInterval={20000} //20 seconds
             />
         </>
@@ -38,7 +36,6 @@ const svelteCode = `<script>
 
 <SvelteLastFmViewer
     user="[username]"
-    api_key="[API_KEY]"
     updateInterval={20000} {/* 20 seconds */}
 />`;
 

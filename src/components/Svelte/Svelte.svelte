@@ -11,7 +11,6 @@
 	type Mode = "dev" | "prod";
 
 	type ComponentParams = {
-		api_key: null | string;
 		user: null | string;
 		updateInterval: null | number;
 		changed: boolean;
@@ -21,7 +20,6 @@
 	const urlParams = new URLSearchParams(window.location.search);
 
 	const paramsStore = writable<ComponentParams>({
-		api_key: urlParams.get("apiKey"),
 		user: urlParams.get("username"),
 		updateInterval: Number(urlParams.get("updateInterval")),
 		mode: urlParams.get("mode") as Mode,
@@ -31,7 +29,6 @@
 	window.addEventListener("querychanged", (e) => {
 		const urlParams = new URLSearchParams(window.location.search);
 		paramsStore.set({
-			api_key: urlParams.get("apiKey"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
 			mode: urlParams.get("mode") as Mode,
@@ -40,7 +37,6 @@
 		setTimeout(
 			() =>
 				paramsStore.set({
-					api_key: urlParams.get("apiKey"),
 					user: urlParams.get("username"),
 					updateInterval: Number(urlParams.get("updateInterval")),
 					mode: urlParams.get("mode") as Mode,
@@ -57,9 +53,8 @@
 	$: console.log(params);
 </script>
 
-{#if params.user && params.api_key && !params.changed}
+{#if params.user && !params.changed}
 	<SvelteLastFmViewer
-		api_key={params.api_key}
 		user={params.user}
 		updateInterval={params.updateInterval
 			? params.updateInterval

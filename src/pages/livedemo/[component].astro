@@ -28,60 +28,35 @@ const { component } = Astro.params;
 				slot="fallback"
 			>
 				{/* Header */}
-				<div class="mb-8">
-					<Skeleton class="mb-3 h-8 w-48 bg-slate-800" />
+				<div class="mb-6">
+					<Skeleton class="mb-2 h-8 w-64 bg-slate-800" />
 					<Skeleton class="h-4 w-80 bg-slate-800" />
 				</div>
 
-				{/* Form Fields in Grid */}
-				<div class="grid grid-cols-2 gap-6 mb-8">
-					{/* Left Column */}
-					<div class="space-y-6">
-						{/* API Key field */}
-						<div class="space-y-3">
-							<div class="flex items-center gap-2">
-								<Skeleton class="h-4 w-16 bg-slate-800" />
-								<Skeleton
-									class="h-4 w-4 rounded-full bg-slate-800"
-								/>
-							</div>
-							<Skeleton
-								class="h-12 w-full rounded-md bg-slate-800"
-							/>
-						</div>
+				{/* Username field - Full width */}
+				<div class="mb-6">
+					<Skeleton class="mb-2 h-4 w-20 bg-slate-800" />
+					<Skeleton class="h-9 w-full rounded-md bg-slate-800" />
+				</div>
 
-						{/* Update Interval field */}
-						<div class="space-y-3">
-							<Skeleton class="h-4 w-36 bg-slate-800" />
-							<Skeleton
-								class="h-12 w-full rounded-md bg-slate-800"
-							/>
-						</div>
+				{/* Update Interval and Mode fields - Two columns */}
+				<div class="grid sm:grid-cols-2 gap-4 mb-6">
+					{/* Update Interval field */}
+					<div>
+						<Skeleton class="mb-2 h-4 w-36 bg-slate-800" />
+						<Skeleton class="h-9 w-full rounded-md bg-slate-800" />
 					</div>
 
-					{/* Right Column */}
-					<div class="space-y-6">
-						{/* Username field */}
-						<div class="space-y-3">
-							<Skeleton class="h-4 w-20 bg-slate-800" />
-							<Skeleton
-								class="h-12 w-full rounded-md bg-slate-800"
-							/>
-						</div>
-
-						{/* Mode field */}
-						<div class="space-y-3">
-							<Skeleton class="h-4 w-12 bg-slate-800" />
-							<Skeleton
-								class="h-12 w-full rounded-md bg-slate-800"
-							/>
-						</div>
+					{/* Mode field */}
+					<div>
+						<Skeleton class="mb-2 h-4 w-12 bg-slate-800" />
+						<Skeleton class="h-9 w-full rounded-md bg-slate-800" />
 					</div>
 				</div>
 
 				{/* Save button */}
 				<div class="flex justify-center">
-					<Skeleton class="h-12 w-48 rounded-md bg-blue-800/50" />
+					<Skeleton class="h-12 w-32 rounded-md bg-blue-800/50" />
 				</div>
 			</div>
 		</ComponentForm>

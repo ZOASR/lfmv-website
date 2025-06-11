@@ -5,7 +5,6 @@ import ReactLastFMViewer from "@lastfm-viewer/react";
 import "@lastfm-viewer/ui/styles";
 
 type ComponentParams = {
-	apiKey: null | string;
 	user: null | string;
 	updateInterval: null | number;
 	mode: "dev" | "prod";
@@ -16,7 +15,6 @@ type Mode = "dev" | "prod";
 
 const ReactComponent = () => {
 	const [params, setParams] = useState<ComponentParams>({
-		apiKey: null,
 		user: null,
 		updateInterval: null,
 		mode: "dev",
@@ -25,7 +23,6 @@ const ReactComponent = () => {
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		setParams({
-			apiKey: urlParams.get("apiKey"),
 			user: urlParams.get("username"),
 			updateInterval: Number(urlParams.get("updateInterval")),
 			mode: urlParams.get("updateInterval") as Mode,
@@ -35,7 +32,6 @@ const ReactComponent = () => {
 		const watch = () => {
 			const urlParams = new URLSearchParams(window.location.search);
 			setParams({
-				apiKey: urlParams.get("apiKey"),
 				user: urlParams.get("username"),
 				updateInterval: Number(urlParams.get("updateInterval")),
 				mode: urlParams.get("mode") as Mode,
@@ -54,9 +50,8 @@ const ReactComponent = () => {
 	}, []);
 	return (
 		<>
-			{params.apiKey && params.user && !params.changed ? (
+			{params.user && !params.changed ? (
 				<ReactLastFMViewer
-					api_key={params.apiKey}
 					user={params.user}
 					updateInterval={
 						params.updateInterval

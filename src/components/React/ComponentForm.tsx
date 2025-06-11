@@ -3,7 +3,6 @@
 import type React from "react";
 
 import { useEffect, useState } from "react";
-import { InfoIcon as InfoCircle, Eye, EyeOff } from "lucide-react";
 import {
 	Card,
 	CardContent,
@@ -31,7 +30,6 @@ import {
 import { cn } from "@/lib/utils";
 
 type FormParams = {
-	apiKey: string | undefined;
 	username: string | undefined;
 	updateInterval: string | undefined;
 	mode: "dev" | "prod" | undefined;
@@ -78,9 +76,7 @@ const themeConfig = {
 function ComponentForm({ theme }: { theme: "react" | "svelte" | "solid" }) {
 	const currentTheme = themeConfig[theme];
 
-	const [showApiKey, setShowApiKey] = useState(false);
 	const [formDataObject, setFormDataObject] = useState<FormParams>({
-		apiKey: "",
 		username: "",
 		updateInterval: "",
 		mode: "dev",
@@ -101,14 +97,12 @@ function ComponentForm({ theme }: { theme: "react" | "svelte" | "solid" }) {
 		}
 		if (lsForm) {
 			setFormDataObject({
-				apiKey: lsForm.apiKey,
 				username: lsForm.username,
 				updateInterval: lsForm.updateInterval,
 				mode: lsForm.mode,
 			});
 		} else if (keys) {
 			setFormDataObject({
-				apiKey: urlParams.get("apiKey") as string | undefined,
 				username: urlParams.get("username") as string | undefined,
 				updateInterval: urlParams.get("updateInterval") as
 					| string
@@ -125,7 +119,6 @@ function ComponentForm({ theme }: { theme: "react" | "svelte" | "solid" }) {
 		localStorage.setItem(
 			"formData",
 			JSON.stringify({
-				apiKey: newFormData?.get("apiKey"),
 				username: newFormData?.get("username"),
 				updateInterval: newFormData?.get("updateInterval"),
 				mode: newFormData?.get("mode"),
@@ -145,81 +138,16 @@ function ComponentForm({ theme }: { theme: "react" | "svelte" | "solid" }) {
 			>
 				<CardHeader className="pb-2">
 					<CardTitle className="text-2xl font-bold text-white">
-						API Configuration
+						Component Configuration
 					</CardTitle>
 					<CardDescription className="text-gray-300">
-						Configure your API settings and preferences
+						Configure your Component settings and preferences
 					</CardDescription>
 				</CardHeader>
 				<form onSubmit={handleSubmit}>
 					<CardContent className="space-y-4">
 						<div className="flex justify-between gap-4 flex-col sm:flex-row">
-							<div className="sm:max-w-1/2 flex-1 space-y-2">
-								<div className="flex items-center justify-between ">
-									<Label
-										htmlFor="apiKey"
-										className="text-sm font-medium text-gray-200"
-									>
-										API Key
-									</Label>
-									<TooltipProvider>
-										<Tooltip>
-											<TooltipTrigger asChild>
-												<InfoCircle
-													className={cn(
-														"h-4 w-4 text-blue-400 cursor-help",
-														currentTheme.badgeClass,
-														"bg-transparent"
-													)}
-												/>
-											</TooltipTrigger>
-											<TooltipContent
-												className={cn(
-													"bg-gray-700 border-gray-600",
-													currentTheme.borderAccent,
-													currentTheme.liveIndicator
-												)}
-											>
-												<p className="w-[200px] text-xs text-gray-200">
-													Your unique API key for
-													authentication
-												</p>
-											</TooltipContent>
-										</Tooltip>
-									</TooltipProvider>
-								</div>
-								<div className="relative">
-									<Input
-										id="apiKey"
-										name="apiKey"
-										type={showApiKey ? "text" : "password"}
-										value={formDataObject.apiKey}
-										onChange={(e) =>
-											handleChange(
-												"apiKey",
-												e.target.value
-											)
-										}
-										className="pr-10 text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
-									/>
-									<Button
-										type="button"
-										variant="ghost"
-										size="icon"
-										className="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-gray-200 hover:bg-gray-600"
-										onClick={() =>
-											setShowApiKey(!showApiKey)
-										}
-									>
-										{showApiKey ? (
-											<EyeOff className="h-4 w-4" />
-										) : (
-											<Eye className="h-4 w-4" />
-										)}
-									</Button>
-								</div>
-							</div>
-							<div className="sm:max-w-1/2 flex-1 space-y-2 relative">
+							<div className=" flex-1 space-y-2 relative">
 								<Label
 									htmlFor="username"
 									className="text-sm font-medium text-gray-200"
