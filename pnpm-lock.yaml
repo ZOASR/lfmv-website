@@ -28,7 +28,10 @@ importers:
         version: 3.0.1
       '@lastfm-viewer/svelte':
         specifier: ^4.0.1
-        version: 4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.1.1)(svelte@5.33.14)
+        version: 4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)
+      '@lastfm-viewer/utils':
+        specifier: ^0.2.0
+        version: 0.2.0
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.7(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -614,8 +617,8 @@ packages:
     resolution: {integrity: sha512-q7sk2vTaWXDWcS8T2zppxV5NbfFR01H/OEYfVWwlMLNbACvGx9gm8xm1WuhX4lH8xCvjuXSGampSylpzUyvrHA==}
     hasBin: true
 
-  '@lastfm-viewer/utils@0.1.1':
-    resolution: {integrity: sha512-PjLYiHBXJ8wseNq72d4yHfc5SIsvRkn0J0DXRf2ToxNiUevOpKc/wsY2PVbfXJVAuCLB24b2bBD2rvCdJ30mEA==}
+  '@lastfm-viewer/utils@0.2.0':
+    resolution: {integrity: sha512-ofzmY+z3g++WCL5os4Gxw4Vg231HamIGhefRTi9fwKVdpYFQq+aQpgXk3Adr4+pwAzLoz5fwtPHTzLhvn21o0A==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -3975,13 +3978,13 @@ snapshots:
     dependencies:
       solid-js: 1.9.7
 
-  '@lastfm-viewer/svelte@4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.1.1)(svelte@5.33.14)':
+  '@lastfm-viewer/svelte@4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)':
     dependencies:
       '@fontsource/inter': 5.2.5
       '@iconify/svelte': 3.1.6(svelte@5.33.14)
       '@lastfm-viewer/tailwind-config': 0.0.8
       '@lastfm-viewer/ui': 0.2.4
-      '@lastfm-viewer/utils': 0.1.1
+      '@lastfm-viewer/utils': 0.2.0
       svelte: 5.33.14
 
   '@lastfm-viewer/tailwind-config@0.0.8':
@@ -4000,7 +4003,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  '@lastfm-viewer/utils@0.1.1':
+  '@lastfm-viewer/utils@0.2.0':
     dependencies:
       color.js: 1.2.0
 
