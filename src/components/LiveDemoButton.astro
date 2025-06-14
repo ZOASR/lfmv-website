@@ -84,61 +84,63 @@
 </style>
 
 <script>
-	const buttons = document.querySelectorAll(
-		".live-demo-button",
-	) as NodeListOf<HTMLButtonElement>;
-	let angle = 0;
-	let animationFrame: number;
-	let targetSpeed = 0.5; // target degrees per frame
-	let currentSpeed = 0.5;
-	let isHovered = false;
-	let hoverTimeout: number;
+	document.addEventListener("astro:page-load", () => {
+		const buttons = document.querySelectorAll(
+			".live-demo-button"
+		) as NodeListOf<HTMLButtonElement>;
+		let angle = 0;
+		let animationFrame: number;
+		let targetSpeed = 0.5; // target degrees per frame
+		let currentSpeed = 0.5;
+		let isHovered = false;
+		let hoverTimeout: number;
 
-	function animate() {
-		// Smoothly interpolate current speed towards target speed
-		currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+		function animate() {
+			// Smoothly interpolate current speed towards target speed
+			currentSpeed += (targetSpeed - currentSpeed) * 0.1;
 
-		angle = (angle + currentSpeed) % 360;
-		buttons.forEach((button) => {
-			button.style.setProperty("--angle", `${angle}deg`);
-		});
-		animationFrame = requestAnimationFrame(animate);
-	}
-
-	buttons.forEach((button) => {
-		button.addEventListener("mouseenter", () => {
-			isHovered = true;
-			targetSpeed = 2; // faster target speed on hover
-			// Clear any existing timeout
-			if (hoverTimeout) {
-				clearTimeout(hoverTimeout);
-			}
-
-			// Set timeout to slow down after 1 second
-			hoverTimeout = window.setTimeout(() => {
-				if (isHovered) {
-					targetSpeed = 0.5;
-				}
-			}, 1000);
-		});
-
-		button.addEventListener("mouseleave", () => {
-			isHovered = false;
-			targetSpeed = 0.5; // normal target speed
-			if (hoverTimeout) {
-				clearTimeout(hoverTimeout);
-			}
-		});
-	});
-
-	// Start animation
-	animate();
-
-	// Cleanup on component unmount
-	document.addEventListener("astro:before-swap", () => {
-		cancelAnimationFrame(animationFrame);
-		if (hoverTimeout) {
-			clearTimeout(hoverTimeout);
+			angle = (angle + currentSpeed) % 360;
+			buttons.forEach((button) => {
+				button.style.setProperty("--angle", `${angle}deg`);
+			});
+			animationFrame = requestAnimationFrame(animate);
 		}
+
+		buttons.forEach((button) => {
+			button.addEventListener("mouseenter", () => {
+				isHovered = true;
+				targetSpeed = 2; // faster target speed on hover
+				// Clear any existing timeout
+				if (hoverTimeout) {
+					clearTimeout(hoverTimeout);
+				}
+
+				// Set timeout to slow down after 1 second
+				hoverTimeout = window.setTimeout(() => {
+					if (isHovered) {
+						targetSpeed = 0.5;
+					}
+				}, 1000);
+			});
+
+			button.addEventListener("mouseleave", () => {
+				isHovered = false;
+				targetSpeed = 0.5; // normal target speed
+				if (hoverTimeout) {
+					clearTimeout(hoverTimeout);
+				}
+			});
+		});
+
+		// Start animation
+		animate();
+
+		// Cleanup on component unmount
+		document.addEventListener("astro:before-swap", () => {
+			cancelAnimationFrame(animationFrame);
+			if (hoverTimeout) {
+				clearTimeout(hoverTimeout);
+			}
+		});
 	});
 </script>
