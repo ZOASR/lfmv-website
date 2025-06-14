@@ -114,7 +114,6 @@ function ComponentForm({ theme }: { theme: "react" | "svelte" | "solid" }) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const newFormData = new FormData(e.target as HTMLFormElement);
-		console.log(newFormData.entries());
 		const params = new URLSearchParams(newFormData as any);
 		localStorage.setItem(
 			"formData",

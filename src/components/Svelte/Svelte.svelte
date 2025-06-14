@@ -50,7 +50,6 @@
 	paramsStore.subscribe((val) => {
 		params = val;
 	});
-	$: console.log(params);
 </script>
 
 {#if params.user && !params.changed}
