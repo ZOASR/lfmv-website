@@ -1,7 +1,7 @@
 ---
 import LiveDemoButton from "./LiveDemoButton.astro";
 import LFMVLogo from "./LFMVLogo.astro";
-const title = "@lastfm-viewer";
+const title = "@lastfm-viewer/";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -14,12 +14,24 @@ import { Icon } from "astro-icon/components";
 
 	{/* Package Name */}
 
-	<h1
-		style=`--title-text:"${title}" `
-		class="text-6xl md:text-7xl font-mono mb-8 relative title"
+	<svg width="0" height="0">
+		<filter id="glow-blur" width="300%" height="300%" x="-100%" y="-100%">
+			<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="50"
+			></feGaussianBlur>
+			<feColorMatrix in="blur" type="saturate" values="8"></feColorMatrix>
+			<feComposite in="SourceGraphic" operator="over"></feComposite>
+		</filter>
+	</svg>
+	<div
+		class="mx-auto text-center mb-8 parent-title text-6xl md:text-7xl flex gap-4 flex-wrap justify-center transition-all text-nowrap w-fit"
+		style="filter: url(#glow-blur); transform-style: preserve-3d;"
 	>
-		{title}
-	</h1>
+		<!-- prettier-ignore -->
+		<h1 class="inline font-mono mb-8 relative title">{title}</h1>
+		<span
+			class="framework font-mono text-center relative inline-block transition-all w-[5ch]"
+		></span>
+	</div>
 
 	{/* Short Description */}
 	<p class="text-lg text-gray-300 mb-12 text-center max-w-xl">
@@ -44,31 +56,115 @@ import { Icon } from "astro-icon/components";
 	</div>
 </section>
 
+<script>
+	import { gsap } from "gsap";
+
+	document.addEventListener("astro:page-load", () => {
+		const frameworks = ["react", "solid", "svelte"];
+		const frameworkElement = document.querySelector(".framework");
+		const parentElement = document.querySelector(".parent-title");
+
+		if (!frameworkElement) {
+			console.error("Framework element not found");
+			return;
+		}
+
+		// Set initial styles
+		gsap.set(frameworkElement, {
+			perspective: 1000,
+			transformStyle: "preserve-3d",
+			backfaceVisibility: "hidden",
+		});
+
+		// Create a timeline for the animation with smoother easing
+		const tl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: 0.3,
+			yoyo: false,
+			ease: "power2.inOut",
+			repeatRefresh: true,
+		});
+
+		// Initial state
+		gsap.set(frameworkElement, {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			rotateX: 0,
+		});
+
+		// Create the animation sequence
+		frameworks.forEach((framework, index) => {
+			const charCount = framework.length;
+			const colorVar = `var(--color-${framework})`;
+
+			// Animate out
+			tl.to(frameworkElement, {
+				duration: 0.5,
+				y: -20,
+				rotateX: -30,
+				scale: 0.95,
+				opacity: 0,
+				ease: "sine.inOut",
+				transformOrigin: "center center -80px",
+				width: `${charCount}ch`,
+				onComplete: () => {
+					frameworkElement.textContent = framework;
+					// @ts-ignore
+					parentElement?.style.setProperty(
+						"--framework-color",
+						colorVar
+					);
+				},
+			})
+				// Animate in with new text and bounce
+				.to(frameworkElement, {
+					duration: 0.7,
+					y: 0,
+					rotateX: 0,
+					scale: 1.05,
+					opacity: 1,
+					ease: "back.out(1.4)",
+					transformOrigin: "center center 100px",
+				})
+				// Subtle bounce effect
+				.to(frameworkElement, {
+					duration: 0.5,
+					scale: 1,
+					ease: "elastic.out(0.8, 0.3)",
+				})
+				.to(frameworkElement, {
+					duration: 0.5,
+					scale: 1,
+					ease: "elastic.out(0.8, 0.3)",
+				});
+
+			// Add a pause between each framework
+			if (index < frameworks.length - 1) {
+				tl.to({}, { duration: 0.8 });
+			}
+		});
+
+		// Cleanup on component unmount
+		document.addEventListener("astro:before-swap", () => {
+			tl.kill();
+		});
+	});
+</script>
+
 <style>
+	.parent-title {
+		color: var(--framework-color);
+		transition: color 0.2s ease;
+	}
+	.framework {
+		transition: color 0.2s ease;
+	}
 	.title {
 		cursor: text;
+		transition: color 0.2s ease;
 		font-size: clamp(2.5rem, 10vw, 4.5rem);
 		text-align: center;
-	}
-	.title {
-		background: linear-gradient(
-			90deg,
-			var(--color-solid),
-			var(--color-svelte),
-			var(--color-react)
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 		position: relative;
-	}
-	.title::before {
-		content: var(--title-text);
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: inherit;
-		filter: blur(30px);
 	}
 </style>
