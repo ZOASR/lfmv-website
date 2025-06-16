@@ -21,14 +21,14 @@ importers:
         specifier: ^8.1.4
         version: 8.1.4(astro@5.8.1(@types/node@20.17.57)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.1)(sass-embedded@1.89.1)(typescript@5.8.3)(yaml@2.8.0))(react@19.1.0)(rollup@4.41.1)(svelte@5.33.14)
       '@lastfm-viewer/react':
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^3.1.0
+        version: 3.1.0
       '@lastfm-viewer/solid':
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^3.1.0
+        version: 3.1.0
       '@lastfm-viewer/svelte':
-        specifier: ^4.0.1
-        version: 4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)
+        specifier: ^5.0.1
+        version: 5.0.1(@fontsource/inter@5.2.5)(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.3.0)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)
       '@lastfm-viewer/utils':
         specifier: ^0.2.0
         version: 0.2.0
@@ -94,8 +94,8 @@ importers:
         specifier: ^1.2.45
         version: 1.2.45
       '@lastfm-viewer/ui':
-        specifier: ^0.2.4
-        version: 0.2.4
+        specifier: ^0.3.0
+        version: 0.3.0
       '@tailwindcss/vite':
         specifier: ^4.1.8
         version: 4.1.8(vite@6.3.5(@types/node@20.17.57)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.1)(yaml@2.8.0))
@@ -452,11 +452,6 @@ packages:
   '@iconify-json/lucide@1.2.45':
     resolution: {integrity: sha512-izW3wk7Ll5HgNMc/m41eOKXb7nL1zFxXZdMyBOtqdwusHXPr8IWSC/ReSgWgxUF3xyNwiQsso5Ppkta2wsUrPg==}
 
-  '@iconify/svelte@3.1.6':
-    resolution: {integrity: sha512-yLSrlkOx5J6xXU5GDLPBV/MdVBVEZhd36onfqSbxQobp1XBoWQbMPLNZyCAmTKCPnmzXSowGy79agl8FQ3kj6A==}
-    peerDependencies:
-      svelte: '*'
-
   '@iconify/tools@4.1.2':
     resolution: {integrity: sha512-q6NzLQYEN9zkDfcyBqD3vItHcZw97w/s++3H3TBxUORr57EfHxj6tOW6fyufDjMq+Vl56WXWaPx1csBPYlI5CA==}
 
@@ -597,27 +592,26 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lastfm-viewer/react@3.0.1':
-    resolution: {integrity: sha512-ZYlB7VPMeGRWoyij7n44QPU3VGt5vzFWrtzfmRMqigIpB+c+9BtPPYlX0btfcDHIO/EgoStAomKC3X+tPle2uw==}
+  '@lastfm-viewer/react@3.1.0':
+    resolution: {integrity: sha512-l2hPUNSRgYJdTC60iUSukQr+2llNiUqGAEER8mqRJKDzCUmqdwqz2VMNaA2yT1NBXMf8U517MJS19OUexav9Kg==}
 
-  '@lastfm-viewer/solid@3.0.1':
-    resolution: {integrity: sha512-OlexjKst1opYD4V39jh6KMnGioYW+SFIQT+pFY+Dm4+KP4DcT930fOOpskw8h7Xe7sEBUEIQJSbI8nzHSBx34w==}
+  '@lastfm-viewer/solid@3.1.0':
+    resolution: {integrity: sha512-S4+W+2kyiqOnqqVQcdFZEhVVwdZPN+g/FNW4OVs5mhqlU796vv76EIe9y70otjIE8Ox8O2x2xO9ahtowiYqG3g==}
 
-  '@lastfm-viewer/svelte@4.0.1':
-    resolution: {integrity: sha512-FslJ7KqyxKYyqGjz/XvwjHdn4ZWV3e08lzZoBNy36hF61R2bs2bADJrB+rNeewmwSNUQ501nS3nnCe0J7xDkvQ==}
+  '@lastfm-viewer/svelte@5.0.1':
+    resolution: {integrity: sha512-UvMHhg3XzTxeowilaZga+bDVaOlzAD5y1VohzfaDnLSUQqJ874vq+qAYnabS+SKVx7zlORf8yKyHEB6hNRSzew==}
     peerDependencies:
       '@fontsource/inter': ^5.0.16
-      '@iconify/svelte': ^3.1.6
       '@lastfm-viewer/tailwind-config': 0.0.8
-      '@lastfm-viewer/ui': 0.2.4
+      '@lastfm-viewer/ui': 0.3.0
       '@lastfm-viewer/utils': 0.2.0
       svelte: ^4.0.0
 
   '@lastfm-viewer/tailwind-config@0.0.8':
     resolution: {integrity: sha512-1jqJUlN/zjf21DSLMnJbTXuVmba4k/ulwrDu8uNwqdRFuLwE/46hHwhTpSJaE7DucBZB0/7KvhprQ+Y0ZJHsvw==}
 
-  '@lastfm-viewer/ui@0.2.4':
-    resolution: {integrity: sha512-q7sk2vTaWXDWcS8T2zppxV5NbfFR01H/OEYfVWwlMLNbACvGx9gm8xm1WuhX4lH8xCvjuXSGampSylpzUyvrHA==}
+  '@lastfm-viewer/ui@0.3.0':
+    resolution: {integrity: sha512-L6TYQihjzU/nBvlfynuDBJqrUZm8coClqDCa7nZkJ57eZyywWe0wAauauOTidHbEuMWWKpXKhSpOYI5NGsMZzQ==}
     hasBin: true
 
   '@lastfm-viewer/utils@0.2.0':
@@ -3833,11 +3827,6 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/svelte@3.1.6(svelte@5.33.14)':
-    dependencies:
-      '@iconify/types': 2.0.0
-      svelte: 5.33.14
-
   '@iconify/tools@4.1.2':
     dependencies:
       '@iconify/types': 2.0.0
@@ -3975,21 +3964,20 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lastfm-viewer/react@3.0.1':
+  '@lastfm-viewer/react@3.1.0':
     dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@lastfm-viewer/solid@3.0.1':
+  '@lastfm-viewer/solid@3.1.0':
     dependencies:
       solid-js: 1.9.7
 
-  '@lastfm-viewer/svelte@4.0.1(@fontsource/inter@5.2.5)(@iconify/svelte@3.1.6(svelte@5.33.14))(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.2.4)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)':
+  '@lastfm-viewer/svelte@5.0.1(@fontsource/inter@5.2.5)(@lastfm-viewer/tailwind-config@0.0.8)(@lastfm-viewer/ui@0.3.0)(@lastfm-viewer/utils@0.2.0)(svelte@5.33.14)':
     dependencies:
       '@fontsource/inter': 5.2.5
-      '@iconify/svelte': 3.1.6(svelte@5.33.14)
       '@lastfm-viewer/tailwind-config': 0.0.8
-      '@lastfm-viewer/ui': 0.2.4
+      '@lastfm-viewer/ui': 0.3.0
       '@lastfm-viewer/utils': 0.2.0
       svelte: 5.33.14
 
@@ -4002,7 +3990,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  '@lastfm-viewer/ui@0.2.4':
+  '@lastfm-viewer/ui@0.3.0':
     dependencies:
       '@fontsource-variable/inter': 5.2.5
       '@lastfm-viewer/tailwind-config': 0.0.8
