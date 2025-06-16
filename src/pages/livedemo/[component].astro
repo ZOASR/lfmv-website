@@ -22,7 +22,12 @@ const { component } = Astro.params;
 		</p>
 
 		<ComponentSelector selected={component as paths} />
-		<ComponentForm theme={component as paths} client:only="react">
+		<ComponentForm
+			transition:persist="component-form"
+			transition:name="component-form"
+			theme={component as paths}
+			client:only="react"
+		>
 			<div
 				class="w-full max-w-xl mx-auto mb-2 rounded-lg bg-slate-900 p-8 shadow-lg"
 				slot="fallback"
