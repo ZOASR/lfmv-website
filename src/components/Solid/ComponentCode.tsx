@@ -31,10 +31,10 @@ function App() {
 }`;
 
 const svelteCode = `<script>
-    import SvelteLastFmViewer from "@lastfm-viewer/svelte/SvelteLastFMViewer.svelte";
+    import { SvelteLastFMViewer } from "@lastfm-viewer/svelte";
 </script>
 
-<SvelteLastFmViewer
+<SvelteLastFMViewer
     user="[username]"
     updateInterval={20000} {/* 20 seconds */}
 />`;

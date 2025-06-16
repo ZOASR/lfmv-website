@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SvelteLastFmViewer from "@lastfm-viewer/svelte/SvelteLastFMViewer";
+	import { SvelteLastFMViewer } from "@lastfm-viewer/svelte";
 	import "@lastfm-viewer/ui/styles";
 	import "@lastfm-viewer/ui/styles/LastFMViewer.css";
 	import "@lastfm-viewer/ui/styles/PastTracks.css";
@@ -53,7 +53,7 @@
 </script>
 
 {#if params.user && !params.changed}
-	<SvelteLastFmViewer
+	<SvelteLastFMViewer
 		user={params.user}
 		updateInterval={params.updateInterval
 			? params.updateInterval
