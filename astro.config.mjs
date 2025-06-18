@@ -24,7 +24,6 @@ export default defineConfig({
 				lucide: ["*"],
 			},
 		}),
-		,
 	],
 
 	output: "server",
@@ -32,6 +31,9 @@ export default defineConfig({
 
 	vite: {
 		plugins: [tailwindcss()],
+		ssr: {
+			noExternal: ["@iconify/svelte"],
+		},
 	},
 
 	adapter: vercel(),

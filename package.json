@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.45",
+    "@iconify/svelte": "^5.0.0",
     "@lastfm-viewer/ui": "^0.3.0",
     "@tailwindcss/vite": "^4.1.8",
     "@types/node": "^20.17.57",

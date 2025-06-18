@@ -93,6 +93,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.45
         version: 1.2.45
+      '@iconify/svelte':
+        specifier: ^5.0.0
+        version: 5.0.0(svelte@5.33.14)
       '@lastfm-viewer/ui':
         specifier: ^0.3.0
         version: 0.3.0
@@ -451,6 +454,11 @@ packages:
 
   '@iconify-json/lucide@1.2.45':
     resolution: {integrity: sha512-izW3wk7Ll5HgNMc/m41eOKXb7nL1zFxXZdMyBOtqdwusHXPr8IWSC/ReSgWgxUF3xyNwiQsso5Ppkta2wsUrPg==}
+
+  '@iconify/svelte@5.0.0':
+    resolution: {integrity: sha512-Bm5iKnNpIWHuUlWaaf16QgVL1tcbQUUSdPdkvDlpmYXg3nFJSA1SLY9V4rRTd+K4h3QT12ZS7JHFLkf8khQd8Q==}
+    peerDependencies:
+      svelte: '>4.0.0'
 
   '@iconify/tools@4.1.2':
     resolution: {integrity: sha512-q6NzLQYEN9zkDfcyBqD3vItHcZw97w/s++3H3TBxUORr57EfHxj6tOW6fyufDjMq+Vl56WXWaPx1csBPYlI5CA==}
@@ -3826,6 +3834,11 @@ snapshots:
   '@iconify-json/lucide@1.2.45':
     dependencies:
       '@iconify/types': 2.0.0
+
+  '@iconify/svelte@5.0.0(svelte@5.33.14)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 5.33.14
 
   '@iconify/tools@4.1.2':
     dependencies:
